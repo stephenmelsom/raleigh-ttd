@@ -15,7 +15,9 @@ python3 -m http.server
 
 ## Editing the list
 
-All content lives directly in `index.html`, grouped into five sections: **Short List**, **Restaurants**, **Coffee Shops**, **Bakeries**, and **Attractions**. To add a place, copy an existing `<article class="card">` block and update the name, city pill, description, and the two links. Map links use the form:
+All content lives directly in `index.html`, grouped into sections. To add a place, copy an existing `<article class="card">` block and update the name, city pill, description, and the two links. Keep `data-category`, `data-lat`, and `data-lng` on mappable cards so the map and search stay in sync. Short-list duplicate cards should keep `data-focus`.
+
+Map links use the form:
 
 ```
 https://www.google.com/maps/search/?api=1&query=<URL-encoded "Name, Address">
