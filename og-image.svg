@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <defs>
     <style>
-      .title { font: 800 92px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #1a1a1a; letter-spacing: -2px; }
+      .title { font: 800 84px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #1a1a1a; letter-spacing: -2px; }
       .sub   { font: 400 34px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #5b6770; }
       .cat   { font: 700 26px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #1a1a1a; }
       .url   { font: 600 26px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #0f766e; }
@@ -12,18 +12,19 @@
   <rect width="1200" height="14" fill="#0f766e"/>
 
   <!-- Pin badge -->
-  <g transform="translate(96 96)">
-    <rect width="92" height="92" rx="22" fill="#0f766e"/>
-    <path fill="#ffffff" d="M46 20c-11.2 0-20.3 9.1-20.3 20.3 0 14.5 20.3 37.7 20.3 37.7s20.3-23.2 20.3-37.7C66.3 29.1 57.2 20 46 20zm0 27.6a7.3 7.3 0 1 1 0-14.6 7.3 7.3 0 0 1 0 14.6z"/>
+  <g transform="translate(96 74)">
+    <rect width="88" height="88" rx="21" fill="#0f766e"/>
+    <path fill="#ffffff" d="M44 19c-10.7 0-19.4 8.7-19.4 19.4 0 13.9 19.4 36.1 19.4 36.1s19.4-22.2 19.4-36.1C63.4 27.7 54.7 19 44 19zm0 26.4a7 7 0 1 1 0-14 7 7 0 0 1 0 14z"/>
   </g>
 
-  <text class="title" x="96" y="320">Raleigh Things To Do</text>
-  <rect x="100" y="356" width="72" height="6" rx="3" fill="#0f766e"/>
-  <text class="sub" x="96" y="424">Our favorite restaurants, coffee, bakeries &amp; attractions</text>
-  <text class="sub" x="96" y="468">around Raleigh &amp; Cary, NC.</text>
+  <text class="title" x="96" y="266">The Melsom Guide</text>
+  <text class="title" x="96" y="352">to Raleigh</text>
+  <rect x="100" y="388" width="72" height="6" rx="3" fill="#0f766e"/>
+  <text class="sub" x="96" y="450">Our favorite restaurants, coffee, bakeries &amp; attractions</text>
+  <text class="sub" x="96" y="494">around Raleigh &amp; Cary, NC.</text>
 
   <!-- Category legend -->
-  <g transform="translate(96 540)">
+  <g transform="translate(96 562)">
     <circle cx="11" cy="-9" r="11" fill="#e74c3c"/>
     <text class="cat" x="32" y="0">Restaurants</text>
 
@@ -40,5 +41,5 @@
     <text class="cat" x="772" y="0">Attractions</text>
   </g>
 
-  <text class="url" x="1104" y="592" text-anchor="end">stephenmelsom.github.io/raleigh-ttd</text>
+  <text class="url" x="1104" y="602" text-anchor="end">stephenmelsom.github.io/raleigh-ttd</text>
 </svg>
