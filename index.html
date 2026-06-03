@@ -6,6 +6,7 @@
   <title>Raleigh Things To Do</title>
   <meta name="description" content="Our favorite restaurants, coffee shops, bakeries, and attractions around Raleigh, NC." />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
 </head>
 <body>
   <header class="site-header">
@@ -24,6 +25,10 @@
       <li><a href="#attractions">Attractions</a></li>
     </ul>
   </nav>
+
+  <div class="map-section">
+    <div id="map"></div>
+  </div>
 
   <main>
     <!-- ---------- Short List ---------- -->
@@ -767,5 +772,117 @@
   <footer class="site-footer">
     <p>Made with love in Raleigh &mdash; come visit!</p>
   </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script>
+  (function () {
+    var map = L.map('map').setView([35.800, -78.720], 11);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    var C = {
+      restaurant: '#e74c3c',
+      coffee:     '#795548',
+      bakery:     '#d97706',
+      icecream:   '#db2777',
+      attraction: '#2563eb'
+    };
+
+    var places = [
+      // Restaurants
+      ['Bosphorous',                        'restaurant', 35.7909, -78.7762],
+      ["Barry's Cafe",                      'restaurant', 35.7553, -78.7203],
+      ['Peck & Plume',                      'restaurant', 35.7881, -78.7775],
+      ['Kashin Japanese Restaurant',        'restaurant', 35.7365, -78.7810],
+      ['O-Ku',                              'restaurant', 35.7797, -78.6463],
+      ['Press Coffee, Crepes & Cocktails',  'restaurant', 35.7820, -78.6470],
+      ['Brewery Bhavana',                   'restaurant', 35.7791, -78.6381],
+      ['Bida Manda',                        'restaurant', 35.7789, -78.6382],
+      ['NOFO @ the Pig',                    'restaurant', 35.8039, -78.6317],
+      ['Szechuan Mansion Hotpot',           'restaurant', 35.7565, -78.7714],
+      ['Whiskey Kitchen',                   'restaurant', 35.7786, -78.6449],
+      ["Poole's Diner",                     'restaurant', 35.7783, -78.6407],
+      ['State Farmers Market Restaurant',   'restaurant', 35.7614, -78.6921],
+      ['Sushi Suyu',                        'restaurant', 35.7328, -78.8499],
+      ['The Cowfish Sushi Burger Bar',      'restaurant', 35.8467, -78.6545],
+      ['Superica',                          'restaurant', 35.7443, -78.8207],
+      ['Standard Beer + Food',              'restaurant', 35.7858, -78.6291],
+      ['Eastcut Sandwich Bar',              'restaurant', 35.8013, -78.6196],
+      // Coffee & Tea
+      ['Iris Coffee Lab',                   'coffee',     35.7726, -78.6426],
+      ['The Williams House',                'coffee',     35.7915, -78.7812],
+      ['Black & White Coffee at Videri',    'coffee',     35.7782, -78.6471],
+      ['Jubala Coffee',                     'coffee',     35.8462, -78.6558],
+      ['Idle Hour Coffee Roasters',         'coffee',     35.8014, -78.6592],
+      ['Fount Coffee + Kitchen',            'coffee',     35.8074, -78.8335],
+      ['Feature Flora',                     'coffee',     35.7727, -78.6467],
+      ['Cocoa Cinnamon',                    'coffee',     36.0050, -78.9240],
+      ['Lucky Tree Cafe',                   'coffee',     35.7853, -78.6994],
+      ['Cup A Joe',                         'coffee',     35.7847, -78.6846],
+      ['The Optimist',                      'coffee',     35.8007, -78.6193],
+      // Bakeries
+      ['Boulted Bread',                     'bakery',     35.7726, -78.6465],
+      ['Paul & Jack Bakery',                'bakery',     35.7835, -78.6490],
+      ["Big Dom's Bagel Shop",              'bakery',     35.7913, -78.7812],
+      ['Brecotea',                          'bakery',     35.7655, -78.7740],
+      ["Baker's Dozen Donuts",              'bakery',     35.7607, -78.7173],
+      // Ice Cream
+      ["Andia's Ice Cream",                 'icecream',   35.7808, -78.8538],
+      ['FRESH. Local Ice Cream',            'icecream',   35.8766, -78.6797],
+      ["JT's Creamery",                     'icecream',   35.6516, -78.8340],
+      ["Goodberry's Frozen Custard",        'icecream',   35.7938, -78.6619],
+      ['Howling Cow Creamery',              'icecream',   35.7641, -78.6742],
+      // Attractions
+      ['NC State Farmers Market',           'attraction', 35.7617, -78.6918],
+      ['Downtown Cary Park',                'attraction', 35.7893, -78.7773],
+      ['Turkuaz Market',                    'attraction', 35.7911, -78.7760],
+      ['Golden Hex',                        'attraction', 35.7998, -78.8078],
+      ['Dorothea Dix Park',                 'attraction', 35.7611, -78.6666],
+      ['Sarah P. Duke Gardens',             'attraction', 36.0013, -78.9371],
+      ['ZincHouse Winery & Brewery',        'attraction', 36.0030, -78.7980],
+      ['North Hills',                       'attraction', 35.8465, -78.6568],
+      ['NC Museum of Art',                  'attraction', 35.8016, -78.6803],
+      ['Pullen Park',                       'attraction', 35.7787, -78.6610],
+      ['Marbles Kids Museum',               'attraction', 35.7823, -78.6340],
+      ['JC Raulston Arboretum',             'attraction', 35.7862, -78.6943],
+      ['Boxcar Bar + Arcade',               'attraction', 35.7780, -78.6474],
+      ['Ebisu Life Store',                  'attraction', 35.7847, -78.6847],
+      ['Historic Yates Mill County Park',   'attraction', 35.7267, -78.6726],
+      ['Kings Bowl North Hills',            'attraction', 35.8474, -78.6540],
+      ['NC Museum of Natural Sciences',     'attraction', 35.7835, -78.6380]
+    ];
+
+    places.forEach(function (p) {
+      L.circleMarker([p[2], p[3]], {
+        radius: 7,
+        fillColor: C[p[1]],
+        color: '#fff',
+        weight: 1.5,
+        opacity: 1,
+        fillOpacity: 0.85
+      }).addTo(map).bindTooltip(p[0], { direction: 'top', offset: [0, -8] });
+    });
+
+    var legend = L.control({ position: 'bottomright' });
+    legend.onAdd = function () {
+      var div = L.DomUtil.create('div', 'map-legend');
+      var items = [
+        ['Restaurants', C.restaurant],
+        ['Coffee & Tea', C.coffee],
+        ['Bakeries',     C.bakery],
+        ['Ice Cream',    C.icecream],
+        ['Attractions',  C.attraction]
+      ];
+      div.innerHTML = items.map(function (i) {
+        return '<div class="legend-item"><span class="legend-dot" style="background:' + i[1] + '"></span>' + i[0] + '</div>';
+      }).join('');
+      return div;
+    };
+    legend.addTo(map);
+  })();
+  </script>
 </body>
 </html>
