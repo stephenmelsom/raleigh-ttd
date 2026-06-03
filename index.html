@@ -63,6 +63,20 @@
     </ul>
   </nav>
 
+  <section class="filters" aria-label="Find places">
+    <div class="filters-inner">
+      <div class="filter-search">
+        <label for="place-search">Search places</label>
+        <input id="place-search" type="search" autocomplete="off" placeholder="Search by name, city, or note" />
+      </div>
+
+      <div class="filter-actions">
+        <button type="button" class="filter-reset" id="filter-reset">Reset</button>
+        <p class="filter-count" id="filter-count" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
   <div class="map-section">
     <div id="map"></div>
   </div>
@@ -107,7 +121,7 @@
         <p>The places we keep coming back to.</p>
       </div>
       <div class="grid">
-        <article class="card" data-focus="place-iris-coffee-lab">
+        <article class="card" data-focus="place-iris-coffee-lab" data-category="coffee">
           <div class="card-title">
             <h3>Iris Coffee Lab</h3>
             <span class="pill">Raleigh</span>
@@ -119,7 +133,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Iris%20Coffee%20Lab%2C%20725%20Tucker%20St%2C%20Raleigh%2C%20NC%2027603" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card" data-focus="place-boulted-bread">
+        <article class="card" data-focus="place-boulted-bread" data-category="bakery">
           <div class="card-title">
             <h3>Boulted Bread</h3>
             <span class="pill">Raleigh</span>
@@ -130,7 +144,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Boulted%20Bread%2C%20614%20West%20South%20St%2C%20Raleigh%2C%20NC%2027603" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card" data-focus="place-nc-state-farmers-market">
+        <article class="card" data-focus="place-nc-state-farmers-market" data-category="attraction">
           <div class="card-title">
             <h3>NC State Farmers Market</h3>
             <span class="pill">Raleigh</span>
@@ -150,18 +164,12 @@
         <h2>Restaurants</h2>
         <p>Where we eat &mdash; from Turkish to sushi to diner breakfast.</p>
       </div>
-      <div class="grid">
-        <article class="card" id="place-bosphorous" data-category="restaurant" data-lat="35.7909" data-lng="-78.7762">
-          <div class="card-title">
-            <h3>Bosphorous</h3>
-            <span class="pill">Cary</span>
-          </div>
-          <p>Turkish &mdash; a longtime favorite.</p>
-          <div class="card-links">
-            <a href="https://www.bosphorus-nc.com/" target="_blank" rel="noopener">Website</a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Bosphorus%20Restaurant%2C%20329%20N%20Harrison%20Ave%2C%20Cary%2C%20NC%2027513" target="_blank" rel="noopener">Map</a>
-          </div>
-        </article>
+      <div class="section-group">
+        <div class="subsection-head">
+          <h3>Breakfast &amp; Brunch</h3>
+          <p>Diners, brunch plates, and morning-friendly restaurants.</p>
+        </div>
+        <div class="grid">
         <article class="card" id="place-barrys-cafe" data-category="restaurant" data-lat="35.7553" data-lng="-78.7203">
           <div class="card-title">
             <h3>Barry's Cafe</h3>
@@ -186,6 +194,63 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Peck%20%26%20Plume%2C%20301%20S%20Academy%20St%2C%20Cary%2C%20NC%2027511" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
+        <article class="card" id="place-press-coffee-crepes-and-cocktails" data-category="restaurant" data-lat="35.782" data-lng="-78.647">
+          <div class="card-title">
+            <h3>Press Coffee, Crepes &amp; Cocktails</h3>
+            <span class="pill">Raleigh</span>
+            <span class="pill breakfast">Breakfast</span>
+          </div>
+          <p>Crepes &amp; brunch &mdash; get there early, no reservations and busy on weekends.</p>
+          <div class="card-links">
+            <a href="https://pressccc.com/locations/raleigh/" target="_blank" rel="noopener">Website</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Press%20Coffee%20Crepes%20Cocktails%2C%20400%20Hillsborough%20St%2C%20Raleigh%2C%20NC%2027603" target="_blank" rel="noopener">Map</a>
+          </div>
+        </article>
+        <article class="card" id="place-nofo-the-pig" data-category="restaurant" data-lat="35.8039" data-lng="-78.6317">
+          <div class="card-title">
+            <h3>NOFO @ the Pig</h3>
+            <span class="pill">Raleigh</span>
+            <span class="pill breakfast">Breakfast</span>
+          </div>
+          <p>Quirky Southern caf&eacute;, gourmet market &amp; gift shop in a former Piggly Wiggly in Five Points.</p>
+          <div class="card-links">
+            <a href="https://www.nofo.com/" target="_blank" rel="noopener">Website</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=NOFO%20%40%20the%20Pig%2C%202014%20Fairview%20Rd%2C%20Raleigh%2C%20NC%2027608" target="_blank" rel="noopener">Map</a>
+          </div>
+        </article>
+        <article class="card" id="place-state-farmers-market-restaurant" data-category="restaurant" data-lat="35.7614" data-lng="-78.6921">
+          <div class="card-title">
+            <h3>State Farmers Market Restaurant</h3>
+            <span class="pill">Raleigh</span>
+            <span class="pill breakfast">Breakfast</span>
+          </div>
+          <p>A popular spot for what we'd call a true Southern breakfast &mdash; giant biscuits, country ham, hotcakes and fresh local fare.</p>
+          <div class="card-links">
+            <a href="https://www.realbiscuits.com/" target="_blank" rel="noopener">Website</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=State%20Farmers%20Market%20Restaurant%2C%201240%20Farmers%20Market%20Dr%2C%20Raleigh%2C%20NC%2027603" target="_blank" rel="noopener">Map</a>
+          </div>
+        </article>
+        <article class="card" id="place-big-doms-bagel-shop" data-category="bakery" data-lat="35.7913" data-lng="-78.7812">
+          <div class="card-title">
+            <h3>Big Dom's Bagel Shop</h3>
+            <span class="pill">Cary</span>
+            <span class="pill breakfast">Breakfast</span>
+          </div>
+          <p>Hand-rolled bagels &amp; b'donuts in downtown Cary &mdash; go early before they sell out.</p>
+          <div class="card-links">
+            <a href="https://www.bigdomsbagelshop.com/" target="_blank" rel="noopener">Website</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Big%20Dom%27s%20Bagel%20Shop%2C%20203%20E%20Chatham%20St%2C%20Cary%2C%20NC%2027511" target="_blank" rel="noopener">Map</a>
+          </div>
+        </article>
+        </div>
+      </div>
+
+      <div class="section-group">
+        <div class="subsection-head">
+          <h3>Asian &amp; Sushi</h3>
+          <p>Sushi, hotpot, dim sum, Laotian, and Japanese favorites.</p>
+        </div>
+        <div class="grid">
         <article class="card" id="place-kashin-japanese-restaurant" data-category="restaurant" data-lat="35.7365" data-lng="-78.781">
           <div class="card-title">
             <h3>Kashin Japanese Restaurant</h3>
@@ -206,18 +271,6 @@
           <div class="card-links">
             <a href="https://www.o-kusushi.com/location/o-ku-raleigh/" target="_blank" rel="noopener">Website</a>
             <a href="https://www.google.com/maps/search/?api=1&query=O-Ku%2C%20411%20W%20Hargett%20St%2C%20Raleigh%2C%20NC%2027603" target="_blank" rel="noopener">Map</a>
-          </div>
-        </article>
-        <article class="card" id="place-press-coffee-crepes-and-cocktails" data-category="restaurant" data-lat="35.782" data-lng="-78.647">
-          <div class="card-title">
-            <h3>Press Coffee, Crepes &amp; Cocktails</h3>
-            <span class="pill">Raleigh</span>
-            <span class="pill breakfast">Breakfast</span>
-          </div>
-          <p>Crepes &amp; brunch &mdash; get there early, no reservations and busy on weekends.</p>
-          <div class="card-links">
-            <a href="https://pressccc.com/locations/raleigh/" target="_blank" rel="noopener">Website</a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Press%20Coffee%20Crepes%20Cocktails%2C%20400%20Hillsborough%20St%2C%20Raleigh%2C%20NC%2027603" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
         <article class="card" id="place-brewery-bhavana" data-category="restaurant" data-lat="35.7791" data-lng="-78.6381">
@@ -241,18 +294,6 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Bida%20Manda%2C%20222%20S%20Blount%20St%2C%20Raleigh%2C%20NC%2027601" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card" id="place-nofo-the-pig" data-category="restaurant" data-lat="35.8039" data-lng="-78.6317">
-          <div class="card-title">
-            <h3>NOFO @ the Pig</h3>
-            <span class="pill">Raleigh</span>
-            <span class="pill breakfast">Breakfast</span>
-          </div>
-          <p>Quirky Southern caf&eacute;, gourmet market &amp; gift shop in a former Piggly Wiggly in Five Points.</p>
-          <div class="card-links">
-            <a href="https://www.nofo.com/" target="_blank" rel="noopener">Website</a>
-            <a href="https://www.google.com/maps/search/?api=1&query=NOFO%20%40%20the%20Pig%2C%202014%20Fairview%20Rd%2C%20Raleigh%2C%20NC%2027608" target="_blank" rel="noopener">Map</a>
-          </div>
-        </article>
         <article class="card" id="place-szechuan-mansion-hotpot" data-category="restaurant" data-lat="35.7565" data-lng="-78.7714">
           <div class="card-title">
             <h3>Szechuan Mansion Hotpot</h3>
@@ -262,40 +303,6 @@
           <div class="card-links">
             <a href="https://szechuanhotpot.com/" target="_blank" rel="noopener">Website</a>
             <a href="https://www.google.com/maps/search/?api=1&query=Szechuan%20Mansion%20Hotpot%2C%201353%20Kildaire%20Farm%20Rd%2C%20Cary%2C%20NC%2027511" target="_blank" rel="noopener">Map</a>
-          </div>
-        </article>
-        <article class="card" id="place-whiskey-kitchen" data-category="restaurant" data-lat="35.7786" data-lng="-78.6449">
-          <div class="card-title">
-            <h3>Whiskey Kitchen</h3>
-            <span class="pill">Raleigh</span>
-          </div>
-          <p>Inventive Southern dishes, craft cocktails and 300+ whiskies in a converted garage by Nash Square.</p>
-          <div class="card-links">
-            <a href="https://www.whiskey.kitchen/" target="_blank" rel="noopener">Website</a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Whiskey%20Kitchen%2C%20201%20W%20Martin%20St%2C%20Raleigh%2C%20NC%2027601" target="_blank" rel="noopener">Map</a>
-          </div>
-        </article>
-        <article class="card" id="place-pooles-diner" data-category="restaurant" data-lat="35.7783" data-lng="-78.6407">
-          <div class="card-title">
-            <h3>Poole's Diner</h3>
-            <span class="pill">Raleigh</span>
-          </div>
-          <p>Ashley Christensen's beloved seasonal take on diner comfort food &mdash; don't miss the macaroni au gratin.</p>
-          <div class="card-links">
-            <a href="https://ac-restaurants.com/pooles/" target="_blank" rel="noopener">Website</a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Poole%27s%20Diner%2C%20428%20S%20McDowell%20St%2C%20Raleigh%2C%20NC%2027601" target="_blank" rel="noopener">Map</a>
-          </div>
-        </article>
-        <article class="card" id="place-state-farmers-market-restaurant" data-category="restaurant" data-lat="35.7614" data-lng="-78.6921">
-          <div class="card-title">
-            <h3>State Farmers Market Restaurant</h3>
-            <span class="pill">Raleigh</span>
-            <span class="pill breakfast">Breakfast</span>
-          </div>
-          <p>A popular spot for what we'd call a true Southern breakfast &mdash; giant biscuits, country ham, hotcakes and fresh local fare.</p>
-          <div class="card-links">
-            <a href="https://www.realbiscuits.com/" target="_blank" rel="noopener">Website</a>
-            <a href="https://www.google.com/maps/search/?api=1&query=State%20Farmers%20Market%20Restaurant%2C%201240%20Farmers%20Market%20Dr%2C%20Raleigh%2C%20NC%2027603" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
         <article class="card" id="place-sushi-suyu" data-category="restaurant" data-lat="35.7328" data-lng="-78.8499">
@@ -320,6 +327,48 @@
             <a href="https://www.google.com/maps/search/?api=1&query=The%20Cowfish%20Sushi%20Burger%20Bar%2C%204208%20Six%20Forks%20Rd%2C%20Raleigh%2C%20NC%2027609" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
+        </div>
+      </div>
+
+      <div class="section-group">
+        <div class="subsection-head">
+          <h3>Dinner &amp; Date Night</h3>
+          <p>Sit-down spots for a proper meal out.</p>
+        </div>
+        <div class="grid">
+        <article class="card" id="place-bosphorous" data-category="restaurant" data-lat="35.7909" data-lng="-78.7762">
+          <div class="card-title">
+            <h3>Bosphorous</h3>
+            <span class="pill">Cary</span>
+          </div>
+          <p>Turkish &mdash; a longtime favorite.</p>
+          <div class="card-links">
+            <a href="https://www.bosphorus-nc.com/" target="_blank" rel="noopener">Website</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Bosphorus%20Restaurant%2C%20329%20N%20Harrison%20Ave%2C%20Cary%2C%20NC%2027513" target="_blank" rel="noopener">Map</a>
+          </div>
+        </article>
+        <article class="card" id="place-whiskey-kitchen" data-category="restaurant" data-lat="35.7786" data-lng="-78.6449">
+          <div class="card-title">
+            <h3>Whiskey Kitchen</h3>
+            <span class="pill">Raleigh</span>
+          </div>
+          <p>Inventive Southern dishes, craft cocktails and 300+ whiskies in a converted garage by Nash Square.</p>
+          <div class="card-links">
+            <a href="https://www.whiskey.kitchen/" target="_blank" rel="noopener">Website</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Whiskey%20Kitchen%2C%20201%20W%20Martin%20St%2C%20Raleigh%2C%20NC%2027601" target="_blank" rel="noopener">Map</a>
+          </div>
+        </article>
+        <article class="card" id="place-pooles-diner" data-category="restaurant" data-lat="35.7783" data-lng="-78.6407">
+          <div class="card-title">
+            <h3>Poole's Diner</h3>
+            <span class="pill">Raleigh</span>
+          </div>
+          <p>Ashley Christensen's beloved seasonal take on diner comfort food &mdash; don't miss the macaroni au gratin.</p>
+          <div class="card-links">
+            <a href="https://ac-restaurants.com/pooles/" target="_blank" rel="noopener">Website</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Poole%27s%20Diner%2C%20428%20S%20McDowell%20St%2C%20Raleigh%2C%20NC%2027601" target="_blank" rel="noopener">Map</a>
+          </div>
+        </article>
         <article class="card" id="place-superica" data-category="restaurant" data-lat="35.7443" data-lng="-78.8207">
           <div class="card-title">
             <h3>Superica</h3>
@@ -331,6 +380,37 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Superica%2C%2025%20Fenton%20Main%20St%2C%20Cary%2C%20NC%2027511" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
+        <article class="card" id="place-gravy" data-category="restaurant" data-lat="35.7780" data-lng="-78.6356">
+          <div class="card-title">
+            <h3>Gravy</h3>
+            <span class="pill">Raleigh</span>
+          </div>
+          <p>Italian-American kitchen in downtown Raleigh &mdash; house-made pasta and scratch-made sauce.</p>
+          <div class="card-links">
+            <a href="https://www.gravyraleigh.com/" target="_blank" rel="noopener">Website</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Gravy%2C%20135%20S%20Wilmington%20St%2C%20Raleigh%2C%20NC%2027601" target="_blank" rel="noopener">Map</a>
+          </div>
+        </article>
+        <article class="card" id="place-irregardless" data-category="restaurant" data-lat="35.7766" data-lng="-78.6494">
+          <div class="card-title">
+            <h3>Irregardless</h3>
+            <span class="pill">Raleigh</span>
+          </div>
+          <p>Raleigh institution since 1975 &mdash; farm-to-table cooking, live music, and a warm neighborhood feel.</p>
+          <div class="card-links">
+            <a href="https://www.irregardless.com/" target="_blank" rel="noopener">Website</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Irregardless%20Cafe%2C%20901%20W%20Morgan%20St%2C%20Raleigh%2C%20NC%2027603" target="_blank" rel="noopener">Map</a>
+          </div>
+        </article>
+        </div>
+      </div>
+
+      <div class="section-group">
+        <div class="subsection-head">
+          <h3>Casual &amp; Quick</h3>
+          <p>Easy stops for lunch, burgers, sandwiches, and lighter food.</p>
+        </div>
+        <div class="grid">
         <article class="card" id="place-standard-beer-food" data-category="restaurant" data-lat="35.7858" data-lng="-78.6291">
           <div class="card-title">
             <h3>Standard Beer + Food</h3>
@@ -364,6 +444,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Raleigh%20Raw%2C%207%20W%20Hargett%20St%2C%20Raleigh%2C%20NC%2027601" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
+        </div>
       </div>
     </section>
 
@@ -406,26 +487,6 @@
           <div class="card-links">
             <a href="https://www.blackwhiteroasters.com/" target="_blank" rel="noopener">Website</a>
             <a href="https://www.google.com/maps/search/?api=1&query=Black%20%26%20White%20Coffee%20at%20Videri%2C%20327%20W%20Davie%20St%2C%20Raleigh%2C%20NC%2027601" target="_blank" rel="noopener">Map</a>
-          </div>
-        </article>
-        <article class="card" id="place-jubala-coffee" data-category="coffee" data-lat="35.8462" data-lng="-78.6558">
-          <div class="card-title">
-            <h3>Jubala Coffee</h3>
-            <span class="pill">Raleigh</span>          </div>
-          <p>Local roaster with dialed-in espresso.</p>
-          <div class="card-links">
-            <a href="https://www.jubalacoffee.com/" target="_blank" rel="noopener">Website</a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Jubala%20Coffee%2C%20200%20Park%20at%20North%20Hills%20St%2C%20Raleigh%2C%20NC%2027609" target="_blank" rel="noopener">Map</a>
-          </div>
-        </article>
-        <article class="card" id="place-idle-hour-coffee-roasters" data-category="coffee" data-lat="35.8014" data-lng="-78.6592">
-          <div class="card-title">
-            <h3>Idle Hour Coffee Roasters</h3>
-            <span class="pill">Raleigh</span>          </div>
-          <p>Cozy neighborhood roaster in Oberlin.</p>
-          <div class="card-links">
-            <a href="https://idlehourcoffee.com/" target="_blank" rel="noopener">Website</a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Idle%20Hour%20Coffee%20Roasters%2C%201818%20Oberlin%20Rd%2C%20Raleigh%2C%20NC%2027608" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
         <article class="card" id="place-fount-coffee-kitchen" data-category="coffee" data-lat="35.8074" data-lng="-78.8335">
@@ -525,18 +586,6 @@
           <div class="card-links">
             <a href="https://www.paulandjackbakery.com/" target="_blank" rel="noopener">Website</a>
             <a href="https://www.google.com/maps/search/?api=1&query=Paul%20%26%20Jack%20Bakery%2C%20911%20N%20West%20St%2C%20Raleigh%2C%20NC%2027603" target="_blank" rel="noopener">Map</a>
-          </div>
-        </article>
-        <article class="card" id="place-big-doms-bagel-shop" data-category="bakery" data-lat="35.7913" data-lng="-78.7812">
-          <div class="card-title">
-            <h3>Big Dom's Bagel Shop</h3>
-            <span class="pill">Cary</span>
-            <span class="pill breakfast">Breakfast</span>
-          </div>
-          <p>Hand-rolled bagels &amp; b'donuts in downtown Cary &mdash; go early before they sell out.</p>
-          <div class="card-links">
-            <a href="https://www.bigdomsbagelshop.com/" target="_blank" rel="noopener">Website</a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Big%20Dom%27s%20Bagel%20Shop%2C%20203%20E%20Chatham%20St%2C%20Cary%2C%20NC%2027511" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
         <article class="card" id="place-brecotea" data-category="bakery" data-lat="35.7655" data-lng="-78.774">
@@ -641,7 +690,12 @@
         <h2>Attractions</h2>
         <p>Parks, markets, museums, and a few day trips worth the drive.</p>
       </div>
-      <div class="grid">
+      <div class="section-group">
+        <div class="subsection-head">
+          <h3>Shops &amp; Markets</h3>
+          <p>Local markets, specialty groceries, and places to browse.</p>
+        </div>
+        <div class="grid">
         <article class="card" id="place-nc-state-farmers-market" data-category="attraction" data-lat="35.7617" data-lng="-78.6918">
           <div class="card-title">
             <h3>NC State Farmers Market</h3>
@@ -651,18 +705,6 @@
           <div class="card-links">
             <a href="https://www.ncagr.gov/divisions/marketing/farmers-markets-agricultural-centers/state-farmers-market-raleigh" target="_blank" rel="noopener">Website</a>
             <a href="https://www.google.com/maps/search/?api=1&query=NC%20State%20Farmers%20Market%2C%201201%20Agriculture%20St%2C%20Raleigh%2C%20NC%2027603" target="_blank" rel="noopener">Map</a>
-          </div>
-        </article>
-        <article class="card" id="place-downtown-cary-park" data-category="attraction" data-lat="35.7893" data-lng="-78.7773">
-          <div class="card-title">
-            <h3>Downtown Cary Park</h3>
-            <span class="pill">Cary</span>
-            <span class="pill kids">Kids</span>
-          </div>
-          <p>Beautiful new park with free Movie Nights on the Great Lawn on Fridays.</p>
-          <div class="card-links">
-            <a href="https://downtowncarypark.com/" target="_blank" rel="noopener">Website</a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Downtown%20Cary%20Park%2C%20327%20S%20Academy%20St%2C%20Cary%2C%20NC%2027511" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
         <article class="card" id="place-turkuaz-market" data-category="attraction" data-lat="35.7911" data-lng="-78.776">
@@ -685,6 +727,49 @@
           <div class="card-links">
             <a href="https://www.goldenhex.com/" target="_blank" rel="noopener">Website</a>
             <a href="https://www.google.com/maps/search/?api=1&query=Golden%20Hex%2C%201200%20NW%20Maynard%20Rd%2C%20Cary%2C%20NC%2027513" target="_blank" rel="noopener">Map</a>
+          </div>
+        </article>
+        <article class="card" id="place-north-hills" data-category="attraction" data-lat="35.8465" data-lng="-78.6568">
+          <div class="card-title">
+            <h3>North Hills</h3>
+            <span class="pill">Raleigh</span>
+          </div>
+          <p>Raleigh's midtown shopping &amp; dining hub.</p>
+          <div class="card-links">
+            <a href="https://www.visitnorthhills.com/" target="_blank" rel="noopener">Website</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=North%20Hills%2C%204321%20Lassiter%20at%20North%20Hills%20Ave%2C%20Raleigh%2C%20NC%2027609" target="_blank" rel="noopener">Map</a>
+          </div>
+        </article>
+        <article class="card" id="place-ebisu-life-store" data-category="attraction" data-lat="35.7847" data-lng="-78.6847">
+          <div class="card-title">
+            <h3>Ebisu Life Store</h3>
+            <span class="pill">Raleigh</span>
+          </div>
+          <p>Japanese &amp; Asian lifestyle shop on Hillsborough Street &mdash; stationery, snacks, homewares and more.</p>
+          <div class="card-links">
+            <a href="https://www.usebisu.com/" target="_blank" rel="noopener">Website</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Ebisu%20Life%20Store%2C%203012%20Hillsborough%20St%2C%20Raleigh%2C%20NC%2027607" target="_blank" rel="noopener">Map</a>
+          </div>
+        </article>
+        </div>
+      </div>
+
+      <div class="section-group">
+        <div class="subsection-head">
+          <h3>Parks &amp; Gardens</h3>
+          <p>Green space, gardens, trails, and outdoor wandering.</p>
+        </div>
+        <div class="grid">
+        <article class="card" id="place-downtown-cary-park" data-category="attraction" data-lat="35.7893" data-lng="-78.7773">
+          <div class="card-title">
+            <h3>Downtown Cary Park</h3>
+            <span class="pill">Cary</span>
+            <span class="pill kids">Kids</span>
+          </div>
+          <p>Beautiful new park with free Movie Nights on the Great Lawn on Fridays.</p>
+          <div class="card-links">
+            <a href="https://downtowncarypark.com/" target="_blank" rel="noopener">Website</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Downtown%20Cary%20Park%2C%20327%20S%20Academy%20St%2C%20Cary%2C%20NC%2027511" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
         <article class="card" id="place-dorothea-dix-park" data-category="attraction" data-lat="35.7611" data-lng="-78.6666">
@@ -710,40 +795,6 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Sarah%20P.%20Duke%20Gardens%2C%20420%20Anderson%20St%2C%20Durham%2C%20NC%2027705" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card" id="place-zinchouse-winery-and-brewery" data-category="attraction" data-lat="36.003" data-lng="-78.798">
-          <div class="card-title">
-            <h3>ZincHouse Winery &amp; Brewery</h3>
-            <span class="pill">Durham</span>
-          </div>
-          <p>A fun spot on an 87-acre estate &mdash; worth the drive.</p>
-          <div class="card-links">
-            <a href="https://www.zinchouse.com/" target="_blank" rel="noopener">Website</a>
-            <a href="https://www.google.com/maps/search/?api=1&query=ZincHouse%20Winery%20%26%20Brewery%2C%206225%20Wake%20Forest%20Hwy%2C%20Durham%2C%20NC%2027703" target="_blank" rel="noopener">Map</a>
-          </div>
-        </article>
-        <article class="card" id="place-north-hills" data-category="attraction" data-lat="35.8465" data-lng="-78.6568">
-          <div class="card-title">
-            <h3>North Hills</h3>
-            <span class="pill">Raleigh</span>
-          </div>
-          <p>Raleigh's midtown shopping &amp; dining hub.</p>
-          <div class="card-links">
-            <a href="https://www.visitnorthhills.com/" target="_blank" rel="noopener">Website</a>
-            <a href="https://www.google.com/maps/search/?api=1&query=North%20Hills%2C%204321%20Lassiter%20at%20North%20Hills%20Ave%2C%20Raleigh%2C%20NC%2027609" target="_blank" rel="noopener">Map</a>
-          </div>
-        </article>
-        <article class="card" id="place-nc-museum-of-art" data-category="attraction" data-lat="35.8016" data-lng="-78.6803">
-          <div class="card-title">
-            <h3>NC Museum of Art</h3>
-            <span class="pill">Raleigh</span>
-            <span class="pill kids">Kids</span>
-          </div>
-          <p>Free admission and a great collection &mdash; plus a 164-acre Museum Park with outdoor walking trails dotted with art installations.</p>
-          <div class="card-links">
-            <a href="https://ncartmuseum.org/" target="_blank" rel="noopener">Website</a>
-            <a href="https://www.google.com/maps/search/?api=1&query=North%20Carolina%20Museum%20of%20Art%2C%202110%20Blue%20Ridge%20Rd%2C%20Raleigh%2C%20NC%2027607" target="_blank" rel="noopener">Map</a>
-          </div>
-        </article>
         <article class="card" id="place-pullen-park" data-category="attraction" data-lat="35.7787" data-lng="-78.661">
           <div class="card-title">
             <h3>Pullen Park</h3>
@@ -753,17 +804,6 @@
           <div class="card-links">
             <a href="https://raleighnc.gov/parks-and-recreation/places/pullen-park" target="_blank" rel="noopener">Website</a>
             <a href="https://www.google.com/maps/search/?api=1&query=Pullen%20Park%2C%20520%20Ashe%20Ave%2C%20Raleigh%2C%20NC%2027606" target="_blank" rel="noopener">Map</a>
-          </div>
-        </article>
-        <article class="card" id="place-marbles-kids-museum" data-category="attraction" data-lat="35.7823" data-lng="-78.634">
-          <div class="card-title">
-            <h3>Marbles Kids Museum</h3>
-            <span class="pill">Raleigh</span>
-            <span class="pill kids">Kids</span>          </div>
-          <p>Two floors of hands-on play for ages 0&ndash;10.</p>
-          <div class="card-links">
-            <a href="https://marbleskidsmuseum.org/" target="_blank" rel="noopener">Website</a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Marbles%20Kids%20Museum%2C%20201%20E%20Hargett%20St%2C%20Raleigh%2C%20NC%2027601" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
         <article class="card" id="place-jc-raulston-arboretum" data-category="attraction" data-lat="35.7862" data-lng="-78.6943">
@@ -776,28 +816,6 @@
             <a href="https://www.google.com/maps/search/?api=1&query=JC%20Raulston%20Arboretum%2C%204415%20Beryl%20Rd%2C%20Raleigh%2C%20NC%2027606" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card" id="place-boxcar-bar-arcade" data-category="attraction" data-lat="35.778" data-lng="-78.6474">
-          <div class="card-title">
-            <h3>Boxcar Bar + Arcade</h3>
-            <span class="pill">Raleigh</span>
-          </div>
-          <p>Dozens of arcade games, a full bar, and a live-music patio in the Warehouse District.</p>
-          <div class="card-links">
-            <a href="https://theboxcarbar.com/raleigh/" target="_blank" rel="noopener">Website</a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Boxcar%20Bar%20%2B%20Arcade%2C%20330%20W%20Davie%20St%2C%20Raleigh%2C%20NC%2027601" target="_blank" rel="noopener">Map</a>
-          </div>
-        </article>
-        <article class="card" id="place-ebisu-life-store" data-category="attraction" data-lat="35.7847" data-lng="-78.6847">
-          <div class="card-title">
-            <h3>Ebisu Life Store</h3>
-            <span class="pill">Raleigh</span>
-          </div>
-          <p>Japanese &amp; Asian lifestyle shop on Hillsborough Street &mdash; stationery, snacks, homewares and more.</p>
-          <div class="card-links">
-            <a href="https://www.usebisu.com/" target="_blank" rel="noopener">Website</a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Ebisu%20Life%20Store%2C%203012%20Hillsborough%20St%2C%20Raleigh%2C%20NC%2027607" target="_blank" rel="noopener">Map</a>
-          </div>
-        </article>
         <article class="card" id="place-historic-yates-mill-county-park" data-category="attraction" data-lat="35.7267" data-lng="-78.6726">
           <div class="card-title">
             <h3>Historic Yates Mill County Park</h3>
@@ -808,6 +826,26 @@
           <div class="card-links">
             <a href="https://www.wake.gov/departments-government/parks-recreation-open-space/all-parks-trails/historic-yates-mill-county-park" target="_blank" rel="noopener">Website</a>
             <a href="https://www.google.com/maps/search/?api=1&query=Historic%20Yates%20Mill%20County%20Park%2C%204620%20Lake%20Wheeler%20Rd%2C%20Raleigh%2C%20NC%2027603" target="_blank" rel="noopener">Map</a>
+          </div>
+        </article>
+        </div>
+      </div>
+
+      <div class="section-group">
+        <div class="subsection-head">
+          <h3>Museums &amp; Family</h3>
+          <p>Indoor exhibits and kid-friendly outings.</p>
+        </div>
+        <div class="grid">
+        <article class="card" id="place-marbles-kids-museum" data-category="attraction" data-lat="35.7823" data-lng="-78.634">
+          <div class="card-title">
+            <h3>Marbles Kids Museum</h3>
+            <span class="pill">Raleigh</span>
+            <span class="pill kids">Kids</span>          </div>
+          <p>Two floors of hands-on play for ages 0&ndash;10.</p>
+          <div class="card-links">
+            <a href="https://marbleskidsmuseum.org/" target="_blank" rel="noopener">Website</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Marbles%20Kids%20Museum%2C%20201%20E%20Hargett%20St%2C%20Raleigh%2C%20NC%2027601" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
         <article class="card" id="place-kings-bowl-north-hills" data-category="attraction" data-lat="35.8474" data-lng="-78.654">
@@ -834,8 +872,53 @@
             <a href="https://www.google.com/maps/search/?api=1&query=NC%20Museum%20of%20Natural%20Sciences%2C%2011%20W%20Jones%20St%2C%20Raleigh%2C%20NC%2027601" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
+        <article class="card" id="place-nc-museum-of-art" data-category="attraction" data-lat="35.8016" data-lng="-78.6803">
+          <div class="card-title">
+            <h3>NC Museum of Art</h3>
+            <span class="pill">Raleigh</span>
+            <span class="pill kids">Kids</span>
+          </div>
+          <p>Free admission and a great collection &mdash; plus a 164-acre Museum Park with outdoor walking trails dotted with art installations.</p>
+          <div class="card-links">
+            <a href="https://ncartmuseum.org/" target="_blank" rel="noopener">Website</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=North%20Carolina%20Museum%20of%20Art%2C%202110%20Blue%20Ridge%20Rd%2C%20Raleigh%2C%20NC%2027607" target="_blank" rel="noopener">Map</a>
+          </div>
+        </article>
+        </div>
+      </div>
+
+      <div class="section-group">
+        <div class="subsection-head">
+          <h3>Drinks &amp; Games</h3>
+          <p>Adult-friendly hangouts, arcades, and a drive-worthy estate stop.</p>
+        </div>
+        <div class="grid">
+        <article class="card" id="place-zinchouse-winery-and-brewery" data-category="attraction" data-lat="36.003" data-lng="-78.798">
+          <div class="card-title">
+            <h3>ZincHouse Winery &amp; Brewery</h3>
+            <span class="pill">Durham</span>
+          </div>
+          <p>A fun spot on an 87-acre estate &mdash; worth the drive.</p>
+          <div class="card-links">
+            <a href="https://www.zinchouse.com/" target="_blank" rel="noopener">Website</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=ZincHouse%20Winery%20%26%20Brewery%2C%206225%20Wake%20Forest%20Hwy%2C%20Durham%2C%20NC%2027703" target="_blank" rel="noopener">Map</a>
+          </div>
+        </article>
+        <article class="card" id="place-boxcar-bar-arcade" data-category="attraction" data-lat="35.778" data-lng="-78.6474">
+          <div class="card-title">
+            <h3>Boxcar Bar + Arcade</h3>
+            <span class="pill">Raleigh</span>
+          </div>
+          <p>Dozens of arcade games, a full bar, and a live-music patio in the Warehouse District.</p>
+          <div class="card-links">
+            <a href="https://theboxcarbar.com/raleigh/" target="_blank" rel="noopener">Website</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Boxcar%20Bar%20%2B%20Arcade%2C%20330%20W%20Davie%20St%2C%20Raleigh%2C%20NC%2027601" target="_blank" rel="noopener">Map</a>
+          </div>
+        </article>
+        </div>
       </div>
     </section>
+    <p class="filter-empty" id="filter-empty" hidden>No places match those filters.</p>
   </main>
 
   <footer class="site-footer">
@@ -867,11 +950,26 @@
     // map is built from those. Add a place by adding a card — the marker follows.
     var cluster = L.markerClusterGroup({ maxClusterRadius: 45, showCoverageOnHover: false });
     var markerById = {};
+    var markerRecords = [];
+    var cardRecords = [];
     var bounds = L.latLngBounds([]);
+    var searchQuery = '';
 
     function nameOf(card) {
       var h3 = card.querySelector('h3');
       return h3 ? h3.textContent.trim() : '';
+    }
+
+    function dataOf(card, marker) {
+      return {
+        card: card,
+        marker: marker,
+        text: card.textContent.trim().toLowerCase()
+      };
+    }
+
+    function matchesSearch(record) {
+      return !searchQuery || record.text.indexOf(searchQuery) !== -1;
     }
 
     function flashCard(card) {
@@ -907,6 +1005,8 @@
       cluster.addLayer(marker);
       if (card.id) markerById[card.id] = marker;
       bounds.extend([lat, lng]);
+      markerRecords.push(dataOf(card, marker));
+      cardRecords.push(dataOf(card, marker));
 
       card.classList.add('card--mappable');
       card.addEventListener('click', function (e) {
@@ -921,6 +1021,7 @@
     Array.prototype.forEach.call(document.querySelectorAll('.card[data-focus]'), function (card) {
       var marker = markerById[card.getAttribute('data-focus')];
       if (!marker) return;
+      cardRecords.push(dataOf(card, marker));
       card.classList.add('card--mappable');
       card.addEventListener('click', function (e) {
         if (e.target.closest('a')) return;
@@ -951,6 +1052,66 @@
       return div;
     };
     legend.addTo(map);
+
+    function applySearch() {
+      var visibleCards = 0;
+      var visibleMarkers = [];
+
+      cardRecords.forEach(function (record) {
+        var visible = matchesSearch(record);
+        record.card.hidden = !visible;
+        if (visible) visibleCards += 1;
+      });
+
+      markerRecords.forEach(function (record) {
+        if (matchesSearch(record)) visibleMarkers.push(record.marker);
+      });
+
+      cluster.clearLayers();
+      visibleMarkers.forEach(function (marker) { cluster.addLayer(marker); });
+
+      Array.prototype.forEach.call(document.querySelectorAll('main .section'), function (section) {
+        Array.prototype.forEach.call(section.querySelectorAll('.section-group'), function (group) {
+          var hasVisibleGroupCards = Array.prototype.some.call(group.querySelectorAll('.card'), function (card) {
+            return !card.hidden;
+          });
+          group.hidden = !hasVisibleGroupCards;
+        });
+
+        var hasVisibleCards = Array.prototype.some.call(section.querySelectorAll('.card'), function (card) {
+          return !card.hidden;
+        });
+        section.hidden = !hasVisibleCards;
+      });
+
+      var count = document.getElementById('filter-count');
+      if (count) {
+        var n = visibleMarkers.length;
+        count.textContent = n + ' ' + (n === 1 ? 'place' : 'places');
+      }
+
+      var empty = document.getElementById('filter-empty');
+      if (empty) empty.hidden = visibleCards > 0;
+    }
+
+    var search = document.getElementById('place-search');
+    if (search) {
+      search.addEventListener('input', function () {
+        searchQuery = search.value.trim().toLowerCase();
+        applySearch();
+      });
+    }
+
+    var reset = document.getElementById('filter-reset');
+    if (reset) {
+      reset.addEventListener('click', function () {
+        searchQuery = '';
+        if (search) search.value = '';
+        applySearch();
+      });
+    }
+
+    applySearch();
 
     map.locate({ setView: false });
     map.on('locationfound', function (e) {
