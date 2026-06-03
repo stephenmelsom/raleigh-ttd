@@ -3,14 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Raleigh Things To Do</title>
+  <title>The Melsom Guide to Raleigh</title>
   <meta name="description" content="Our favorite restaurants, coffee shops, bakeries, and attractions around Raleigh, NC." />
+
+  <!-- Social / link previews -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="The Melsom Guide to Raleigh" />
+  <meta property="og:title" content="The Melsom Guide to Raleigh" />
+  <meta property="og:description" content="Our favorite restaurants, coffee shops, bakeries, and attractions around Raleigh &amp; Cary, NC — the places we send friends and family." />
+  <meta property="og:url" content="https://stephenmelsom.github.io/raleigh-ttd/" />
+  <meta property="og:image" content="https://stephenmelsom.github.io/raleigh-ttd/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="The Melsom Guide to Raleigh — our favorite spots around Raleigh & Cary, NC" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The Melsom Guide to Raleigh" />
+  <meta name="twitter:description" content="Our favorite restaurants, coffee shops, bakeries, and attractions around Raleigh &amp; Cary, NC — the places we send friends and family." />
+  <meta name="twitter:image" content="https://stephenmelsom.github.io/raleigh-ttd/og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" crossorigin="" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" crossorigin="" />
 </head>
 <body>
   <header class="site-header">
-    <h1>Raleigh Things To Do</h1>
+    <h1>The Melsom Guide to Raleigh</h1>
     <div class="accent-rule"></div>
     <p class="intro">Our favorite spots around Raleigh &amp; Cary &mdash; the places we send friends and family to. Each one links to its website and Google Maps.</p>
   </header>
@@ -38,7 +57,7 @@
         <p>The places we keep coming back to.</p>
       </div>
       <div class="grid">
-        <article class="card">
+        <article class="card" data-focus="place-iris-coffee-lab">
           <div class="card-title">
             <h3>Iris Coffee Lab</h3>
             <span class="pill">Raleigh</span>
@@ -50,7 +69,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Iris%20Coffee%20Lab%2C%20725%20Tucker%20St%2C%20Raleigh%2C%20NC%2027603" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" data-focus="place-boulted-bread">
           <div class="card-title">
             <h3>Boulted Bread</h3>
             <span class="pill">Raleigh</span>
@@ -61,7 +80,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Boulted%20Bread%2C%20614%20West%20South%20St%2C%20Raleigh%2C%20NC%2027603" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" data-focus="place-nc-state-farmers-market">
           <div class="card-title">
             <h3>NC State Farmers Market</h3>
             <span class="pill">Raleigh</span>
@@ -82,7 +101,7 @@
         <p>Where we eat &mdash; from Turkish to sushi to diner breakfast.</p>
       </div>
       <div class="grid">
-        <article class="card">
+        <article class="card" id="place-bosphorous" data-category="restaurant" data-lat="35.7909" data-lng="-78.7762">
           <div class="card-title">
             <h3>Bosphorous</h3>
             <span class="pill">Cary</span>
@@ -93,7 +112,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Bosphorus%20Restaurant%2C%20329%20N%20Harrison%20Ave%2C%20Cary%2C%20NC%2027513" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-barrys-cafe" data-category="restaurant" data-lat="35.7553" data-lng="-78.7203">
           <div class="card-title">
             <h3>Barry's Cafe</h3>
             <span class="pill">Cary</span>
@@ -105,7 +124,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Barry%27s%20Cafe%2C%202851%20Jones%20Franklin%20Rd%2C%20Raleigh%2C%20NC%2027606" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-peck-and-plume" data-category="restaurant" data-lat="35.7881" data-lng="-78.7775">
           <div class="card-title">
             <h3>Peck &amp; Plume</h3>
             <span class="pill">Cary</span>
@@ -117,7 +136,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Peck%20%26%20Plume%2C%20301%20S%20Academy%20St%2C%20Cary%2C%20NC%2027511" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-kashin-japanese-restaurant" data-category="restaurant" data-lat="35.7365" data-lng="-78.781">
           <div class="card-title">
             <h3>Kashin Japanese Restaurant</h3>
             <span class="pill">Cary</span>
@@ -128,7 +147,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Kashin%20Japanese%20Restaurant%2C%20309%20Crossroads%20Blvd%2C%20Cary%2C%20NC%2027518" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-o-ku" data-category="restaurant" data-lat="35.7797" data-lng="-78.6463">
           <div class="card-title">
             <h3>O-Ku</h3>
             <span class="pill">Raleigh</span>
@@ -139,7 +158,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=O-Ku%2C%20411%20W%20Hargett%20St%2C%20Raleigh%2C%20NC%2027603" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-press-coffee-crepes-and-cocktails" data-category="restaurant" data-lat="35.782" data-lng="-78.647">
           <div class="card-title">
             <h3>Press Coffee, Crepes &amp; Cocktails</h3>
             <span class="pill">Raleigh</span>
@@ -151,7 +170,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Press%20Coffee%20Crepes%20Cocktails%2C%20400%20Hillsborough%20St%2C%20Raleigh%2C%20NC%2027603" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-brewery-bhavana" data-category="restaurant" data-lat="35.7791" data-lng="-78.6381">
           <div class="card-title">
             <h3>Brewery Bhavana</h3>
             <span class="pill">Raleigh</span>          </div>
@@ -161,7 +180,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Brewery%20Bhavana%2C%20218%20S%20Blount%20St%2C%20Raleigh%2C%20NC%2027601" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-bida-manda" data-category="restaurant" data-lat="35.7789" data-lng="-78.6382">
           <div class="card-title">
             <h3>Bida Manda</h3>
             <span class="pill">Raleigh</span>
@@ -172,7 +191,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Bida%20Manda%2C%20222%20S%20Blount%20St%2C%20Raleigh%2C%20NC%2027601" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-nofo-the-pig" data-category="restaurant" data-lat="35.8039" data-lng="-78.6317">
           <div class="card-title">
             <h3>NOFO @ the Pig</h3>
             <span class="pill">Raleigh</span>
@@ -184,7 +203,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=NOFO%20%40%20the%20Pig%2C%202014%20Fairview%20Rd%2C%20Raleigh%2C%20NC%2027608" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-szechuan-mansion-hotpot" data-category="restaurant" data-lat="35.7565" data-lng="-78.7714">
           <div class="card-title">
             <h3>Szechuan Mansion Hotpot</h3>
             <span class="pill">Cary</span>
@@ -195,7 +214,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Szechuan%20Mansion%20Hotpot%2C%201353%20Kildaire%20Farm%20Rd%2C%20Cary%2C%20NC%2027511" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-whiskey-kitchen" data-category="restaurant" data-lat="35.7786" data-lng="-78.6449">
           <div class="card-title">
             <h3>Whiskey Kitchen</h3>
             <span class="pill">Raleigh</span>
@@ -206,7 +225,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Whiskey%20Kitchen%2C%20201%20W%20Martin%20St%2C%20Raleigh%2C%20NC%2027601" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-pooles-diner" data-category="restaurant" data-lat="35.7783" data-lng="-78.6407">
           <div class="card-title">
             <h3>Poole's Diner</h3>
             <span class="pill">Raleigh</span>
@@ -217,7 +236,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Poole%27s%20Diner%2C%20428%20S%20McDowell%20St%2C%20Raleigh%2C%20NC%2027601" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-state-farmers-market-restaurant" data-category="restaurant" data-lat="35.7614" data-lng="-78.6921">
           <div class="card-title">
             <h3>State Farmers Market Restaurant</h3>
             <span class="pill">Raleigh</span>
@@ -229,7 +248,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=State%20Farmers%20Market%20Restaurant%2C%201240%20Farmers%20Market%20Dr%2C%20Raleigh%2C%20NC%2027603" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-sushi-suyu" data-category="restaurant" data-lat="35.7328" data-lng="-78.8499">
           <div class="card-title">
             <h3>Sushi Suyu</h3>
             <span class="pill">Apex</span>
@@ -240,7 +259,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Sushi%20Suyu%2C%20301%20N%20Salem%20St%2C%20Apex%2C%20NC%2027502" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-the-cowfish-sushi-burger-bar" data-category="restaurant" data-lat="35.8467" data-lng="-78.6545">
           <div class="card-title">
             <h3>The Cowfish Sushi Burger Bar</h3>
             <span class="pill">Raleigh</span>
@@ -251,7 +270,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=The%20Cowfish%20Sushi%20Burger%20Bar%2C%204208%20Six%20Forks%20Rd%2C%20Raleigh%2C%20NC%2027609" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-superica" data-category="restaurant" data-lat="35.7443" data-lng="-78.8207">
           <div class="card-title">
             <h3>Superica</h3>
             <span class="pill">Cary</span>
@@ -262,7 +281,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Superica%2C%2025%20Fenton%20Main%20St%2C%20Cary%2C%20NC%2027511" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-standard-beer-food" data-category="restaurant" data-lat="35.7858" data-lng="-78.6291">
           <div class="card-title">
             <h3>Standard Beer + Food</h3>
             <span class="pill">Raleigh</span>
@@ -273,7 +292,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Standard%20Beer%20%2B%20Food%2C%20205%20E%20Franklin%20St%2C%20Raleigh%2C%20NC%2027604" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-eastcut-sandwich-bar" data-category="restaurant" data-lat="35.8013" data-lng="-78.6196">
           <div class="card-title">
             <h3>Eastcut Sandwich Bar</h3>
             <span class="pill">Raleigh</span>
@@ -284,7 +303,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Eastcut%20Sandwich%20Bar%2C%201101%20E%20Whitaker%20Mill%20Rd%2C%20Raleigh%2C%20NC%2027604" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-raleigh-raw" data-category="restaurant" data-lat="35.7796" data-lng="-78.6389">
           <div class="card-title">
             <h3>Raleigh Raw</h3>
             <span class="pill">Raleigh</span>
@@ -305,7 +324,7 @@
         <p>We love specialty coffee (and a good cup of tea) &mdash; here's where we go.</p>
       </div>
       <div class="grid">
-        <article class="card">
+        <article class="card" id="place-iris-coffee-lab" data-category="coffee" data-lat="35.7726" data-lng="-78.6426">
           <div class="card-title">
             <h3>Iris Coffee Lab</h3>
             <span class="pill">Raleigh</span>
@@ -317,7 +336,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Iris%20Coffee%20Lab%2C%20725%20Tucker%20St%2C%20Raleigh%2C%20NC%2027603" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-the-williams-house" data-category="coffee" data-lat="35.7915" data-lng="-78.7812">
           <div class="card-title">
             <h3>The Williams House</h3>
             <span class="pill">Cary</span>
@@ -328,7 +347,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=The%20Williams%20House%2C%20210%20E%20Chatham%20St%2C%20Cary%2C%20NC%2027511" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-black-and-white-coffee-at-videri" data-category="coffee" data-lat="35.7782" data-lng="-78.6471">
           <div class="card-title">
             <h3>Black &amp; White Coffee at Videri</h3>
             <span class="pill">Raleigh</span>
@@ -339,7 +358,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Black%20%26%20White%20Coffee%20at%20Videri%2C%20327%20W%20Davie%20St%2C%20Raleigh%2C%20NC%2027601" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-jubala-coffee" data-category="coffee" data-lat="35.8462" data-lng="-78.6558">
           <div class="card-title">
             <h3>Jubala Coffee</h3>
             <span class="pill">Raleigh</span>          </div>
@@ -349,7 +368,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Jubala%20Coffee%2C%20200%20Park%20at%20North%20Hills%20St%2C%20Raleigh%2C%20NC%2027609" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-idle-hour-coffee-roasters" data-category="coffee" data-lat="35.8014" data-lng="-78.6592">
           <div class="card-title">
             <h3>Idle Hour Coffee Roasters</h3>
             <span class="pill">Raleigh</span>          </div>
@@ -359,7 +378,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Idle%20Hour%20Coffee%20Roasters%2C%201818%20Oberlin%20Rd%2C%20Raleigh%2C%20NC%2027608" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-fount-coffee-kitchen" data-category="coffee" data-lat="35.8074" data-lng="-78.8335">
           <div class="card-title">
             <h3>Fount Coffee + Kitchen</h3>
             <span class="pill">Morrisville</span>
@@ -371,7 +390,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Fount%20Coffee%20%2B%20Kitchen%2C%2010954%20Chapel%20Hill%20Rd%2C%20Morrisville%2C%20NC%2027560" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-feature-flora" data-category="coffee" data-lat="35.7727" data-lng="-78.6467">
           <div class="card-title">
             <h3>Feature Flora</h3>
             <span class="pill">Raleigh</span>
@@ -382,7 +401,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Feature%20Flora%2C%20612%20W%20South%20St%2C%20Raleigh%2C%20NC%2027603" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-cocoa-cinnamon" data-category="coffee" data-lat="36.005" data-lng="-78.924">
           <div class="card-title">
             <h3>Cocoa Cinnamon</h3>
             <span class="pill">Durham</span>
@@ -393,7 +412,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Cocoa%20Cinnamon%2C%20420%20W%20Geer%20St%2C%20Durham%2C%20NC%2027701" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-lucky-tree-cafe" data-category="coffee" data-lat="35.7853" data-lng="-78.6994">
           <div class="card-title">
             <h3>Lucky Tree Cafe</h3>
             <span class="pill">Raleigh</span>
@@ -404,7 +423,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Lucky%20Tree%20Cafe%2C%203801%20Hillsborough%20St%2C%20Raleigh%2C%20NC%2027607" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-cup-a-joe" data-category="coffee" data-lat="35.7847" data-lng="-78.6846">
           <div class="card-title">
             <h3>Cup A Joe</h3>
             <span class="pill">Raleigh</span>
@@ -415,7 +434,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Cup%20A%20Joe%2C%203100%20Hillsborough%20St%2C%20Raleigh%2C%20NC%2027607" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-the-optimist" data-category="coffee" data-lat="35.8007" data-lng="-78.6193">
           <div class="card-title">
             <h3>The Optimist</h3>
             <span class="pill">Raleigh</span>
@@ -436,7 +455,7 @@
         <p>Donuts, bagels, and the good stuff.</p>
       </div>
       <div class="grid">
-        <article class="card">
+        <article class="card" id="place-boulted-bread" data-category="bakery" data-lat="35.7726" data-lng="-78.6465">
           <div class="card-title">
             <h3>Boulted Bread</h3>
             <span class="pill">Raleigh</span>
@@ -447,7 +466,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Boulted%20Bread%2C%20614%20West%20South%20St%2C%20Raleigh%2C%20NC%2027603" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-paul-and-jack-bakery" data-category="bakery" data-lat="35.7835" data-lng="-78.649">
           <div class="card-title">
             <h3>Paul &amp; Jack Bakery</h3>
             <span class="pill">Raleigh &amp; Cary</span>
@@ -458,7 +477,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Paul%20%26%20Jack%20Bakery%2C%20911%20N%20West%20St%2C%20Raleigh%2C%20NC%2027603" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-big-doms-bagel-shop" data-category="bakery" data-lat="35.7913" data-lng="-78.7812">
           <div class="card-title">
             <h3>Big Dom's Bagel Shop</h3>
             <span class="pill">Cary</span>
@@ -470,7 +489,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Big%20Dom%27s%20Bagel%20Shop%2C%20203%20E%20Chatham%20St%2C%20Cary%2C%20NC%2027511" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-brecotea" data-category="bakery" data-lat="35.7655" data-lng="-78.774">
           <div class="card-title">
             <h3>Brecotea</h3>
             <span class="pill">Cary</span>
@@ -481,7 +500,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Brecotea%2C%201144%20Kildaire%20Farm%20Rd%2C%20Cary%2C%20NC%2027511" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-bakers-dozen-donuts" data-category="bakery" data-lat="35.7607" data-lng="-78.7173">
           <div class="card-title">
             <h3>Baker's Dozen Donuts</h3>
             <span class="pill">Raleigh</span>
@@ -503,7 +522,7 @@
         <p>Scoops, custard, and creameries worth the calories.</p>
       </div>
       <div class="grid">
-        <article class="card">
+        <article class="card" id="place-andias-ice-cream" data-category="icecream" data-lat="35.7808" data-lng="-78.8538">
           <div class="card-title">
             <h3>Andia's Ice Cream</h3>
             <span class="pill">Cary</span>
@@ -515,7 +534,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Andia%27s%20Ice%20Cream%2C%2010120%20Green%20Level%20Church%20Rd%2C%20Cary%2C%20NC%2027519" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-fresh-local-ice-cream" data-category="icecream" data-lat="35.8766" data-lng="-78.6797">
           <div class="card-title">
             <h3>FRESH. Local Ice Cream</h3>
             <span class="pill">Raleigh</span>
@@ -527,7 +546,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=FRESH.%20Local%20Ice%20Cream%2C%206033%20Glenwood%20Ave%2C%20Raleigh%2C%20NC%2027612" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-jts-creamery" data-category="icecream" data-lat="35.6516" data-lng="-78.834">
           <div class="card-title">
             <h3>JT's Creamery</h3>
             <span class="pill">Holly Springs</span>
@@ -539,7 +558,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=JT%27s%20Creamery%2C%20300%20S%20Main%20St%2C%20Holly%20Springs%2C%20NC%2027540" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-goodberrys-frozen-custard" data-category="icecream" data-lat="35.7938" data-lng="-78.6619">
           <div class="card-title">
             <h3>Goodberry's Frozen Custard</h3>
             <span class="pill">Raleigh</span>
@@ -551,7 +570,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Goodberry%27s%20Frozen%20Custard%2C%202042%20Clark%20Ave%2C%20Raleigh%2C%20NC%2027605" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-howling-cow-dairy-education-center-and-creamery" data-category="icecream" data-lat="35.7641" data-lng="-78.6742">
           <div class="card-title">
             <h3>Howling Cow Dairy Education Center &amp; Creamery</h3>
             <span class="pill">Raleigh</span>
@@ -573,7 +592,7 @@
         <p>Parks, markets, museums, and a few day trips worth the drive.</p>
       </div>
       <div class="grid">
-        <article class="card">
+        <article class="card" id="place-nc-state-farmers-market" data-category="attraction" data-lat="35.7617" data-lng="-78.6918">
           <div class="card-title">
             <h3>NC State Farmers Market</h3>
             <span class="pill">Raleigh</span>
@@ -584,7 +603,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=NC%20State%20Farmers%20Market%2C%201201%20Agriculture%20St%2C%20Raleigh%2C%20NC%2027603" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-downtown-cary-park" data-category="attraction" data-lat="35.7893" data-lng="-78.7773">
           <div class="card-title">
             <h3>Downtown Cary Park</h3>
             <span class="pill">Cary</span>
@@ -596,7 +615,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Downtown%20Cary%20Park%2C%20327%20S%20Academy%20St%2C%20Cary%2C%20NC%2027511" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-turkuaz-market" data-category="attraction" data-lat="35.7911" data-lng="-78.776">
           <div class="card-title">
             <h3>Turkuaz Market</h3>
             <span class="pill">Cary</span>
@@ -607,7 +626,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Turkuaz%20Market%2C%20329%20N%20Harrison%20Ave%2C%20Cary%2C%20NC%2027513" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-golden-hex" data-category="attraction" data-lat="35.7998" data-lng="-78.8078">
           <div class="card-title">
             <h3>Golden Hex</h3>
             <span class="pill">Cary</span>
@@ -618,7 +637,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Golden%20Hex%2C%201200%20NW%20Maynard%20Rd%2C%20Cary%2C%20NC%2027513" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-dorothea-dix-park" data-category="attraction" data-lat="35.7611" data-lng="-78.6666">
           <div class="card-title">
             <h3>Dorothea Dix Park</h3>
             <span class="pill">Raleigh</span>
@@ -630,7 +649,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Dorothea%20Dix%20Park%2C%202105%20Umstead%20Dr%2C%20Raleigh%2C%20NC%2027603" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-sarah-p-duke-gardens" data-category="attraction" data-lat="36.0013" data-lng="-78.9371">
           <div class="card-title">
             <h3>Sarah P. Duke Gardens</h3>
             <span class="pill">Durham</span>
@@ -641,7 +660,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Sarah%20P.%20Duke%20Gardens%2C%20420%20Anderson%20St%2C%20Durham%2C%20NC%2027705" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-zinchouse-winery-and-brewery" data-category="attraction" data-lat="36.003" data-lng="-78.798">
           <div class="card-title">
             <h3>ZincHouse Winery &amp; Brewery</h3>
             <span class="pill">Durham</span>
@@ -652,7 +671,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=ZincHouse%20Winery%20%26%20Brewery%2C%206225%20Wake%20Forest%20Hwy%2C%20Durham%2C%20NC%2027703" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-north-hills" data-category="attraction" data-lat="35.8465" data-lng="-78.6568">
           <div class="card-title">
             <h3>North Hills</h3>
             <span class="pill">Raleigh</span>
@@ -663,7 +682,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=North%20Hills%2C%204321%20Lassiter%20at%20North%20Hills%20Ave%2C%20Raleigh%2C%20NC%2027609" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-nc-museum-of-art" data-category="attraction" data-lat="35.8016" data-lng="-78.6803">
           <div class="card-title">
             <h3>NC Museum of Art</h3>
             <span class="pill">Raleigh</span>
@@ -675,7 +694,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=North%20Carolina%20Museum%20of%20Art%2C%202110%20Blue%20Ridge%20Rd%2C%20Raleigh%2C%20NC%2027607" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-pullen-park" data-category="attraction" data-lat="35.7787" data-lng="-78.661">
           <div class="card-title">
             <h3>Pullen Park</h3>
             <span class="pill">Raleigh</span>
@@ -686,7 +705,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Pullen%20Park%2C%20520%20Ashe%20Ave%2C%20Raleigh%2C%20NC%2027606" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-marbles-kids-museum" data-category="attraction" data-lat="35.7823" data-lng="-78.634">
           <div class="card-title">
             <h3>Marbles Kids Museum</h3>
             <span class="pill">Raleigh</span>
@@ -697,7 +716,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Marbles%20Kids%20Museum%2C%20201%20E%20Hargett%20St%2C%20Raleigh%2C%20NC%2027601" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-jc-raulston-arboretum" data-category="attraction" data-lat="35.7862" data-lng="-78.6943">
           <div class="card-title">
             <h3>JC Raulston Arboretum</h3>
             <span class="pill">Raleigh</span>          </div>
@@ -707,7 +726,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=JC%20Raulston%20Arboretum%2C%204415%20Beryl%20Rd%2C%20Raleigh%2C%20NC%2027606" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-boxcar-bar-arcade" data-category="attraction" data-lat="35.778" data-lng="-78.6474">
           <div class="card-title">
             <h3>Boxcar Bar + Arcade</h3>
             <span class="pill">Raleigh</span>
@@ -718,7 +737,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Boxcar%20Bar%20%2B%20Arcade%2C%20330%20W%20Davie%20St%2C%20Raleigh%2C%20NC%2027601" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-ebisu-life-store" data-category="attraction" data-lat="35.7847" data-lng="-78.6847">
           <div class="card-title">
             <h3>Ebisu Life Store</h3>
             <span class="pill">Raleigh</span>
@@ -729,7 +748,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Ebisu%20Life%20Store%2C%203012%20Hillsborough%20St%2C%20Raleigh%2C%20NC%2027607" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-historic-yates-mill-county-park" data-category="attraction" data-lat="35.7267" data-lng="-78.6726">
           <div class="card-title">
             <h3>Historic Yates Mill County Park</h3>
             <span class="pill">Raleigh</span>
@@ -741,7 +760,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Historic%20Yates%20Mill%20County%20Park%2C%204620%20Lake%20Wheeler%20Rd%2C%20Raleigh%2C%20NC%2027603" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-kings-bowl-north-hills" data-category="attraction" data-lat="35.8474" data-lng="-78.654">
           <div class="card-title">
             <h3>Kings Bowl &mdash; North Hills</h3>
             <span class="pill">Raleigh</span>
@@ -753,7 +772,7 @@
             <a href="https://www.google.com/maps/search/?api=1&query=Kings%20Bowl%20North%20Hills%2C%20141%20Park%20at%20N%20Hills%20St%2C%20Raleigh%2C%20NC%2027609" target="_blank" rel="noopener">Map</a>
           </div>
         </article>
-        <article class="card">
+        <article class="card" id="place-nc-museum-of-natural-sciences" data-category="attraction" data-lat="35.7835" data-lng="-78.638">
           <div class="card-title">
             <h3>NC Museum of Natural Sciences</h3>
             <span class="pill">Raleigh</span>
@@ -774,15 +793,17 @@
   </footer>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js" crossorigin=""></script>
   <script>
   (function () {
-    var map = L.map('map').setView([35.800, -78.720], 11);
+    var map = L.map('map');
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 18,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
+    // Category -> marker colour (kept in sync with the legend below).
     var C = {
       restaurant: '#e74c3c',
       coffee:     '#795548',
@@ -791,80 +812,78 @@
       attraction: '#2563eb'
     };
 
-    var places = [
-      // Restaurants
-      ['Bosphorous',                        'restaurant', 35.7909, -78.7762],
-      ["Barry's Cafe",                      'restaurant', 35.7553, -78.7203],
-      ['Peck & Plume',                      'restaurant', 35.7881, -78.7775],
-      ['Kashin Japanese Restaurant',        'restaurant', 35.7365, -78.7810],
-      ['O-Ku',                              'restaurant', 35.7797, -78.6463],
-      ['Press Coffee, Crepes & Cocktails',  'restaurant', 35.7820, -78.6470],
-      ['Brewery Bhavana',                   'restaurant', 35.7791, -78.6381],
-      ['Bida Manda',                        'restaurant', 35.7789, -78.6382],
-      ['NOFO @ the Pig',                    'restaurant', 35.8039, -78.6317],
-      ['Szechuan Mansion Hotpot',           'restaurant', 35.7565, -78.7714],
-      ['Whiskey Kitchen',                   'restaurant', 35.7786, -78.6449],
-      ["Poole's Diner",                     'restaurant', 35.7783, -78.6407],
-      ['State Farmers Market Restaurant',   'restaurant', 35.7614, -78.6921],
-      ['Sushi Suyu',                        'restaurant', 35.7328, -78.8499],
-      ['The Cowfish Sushi Burger Bar',      'restaurant', 35.8467, -78.6545],
-      ['Superica',                          'restaurant', 35.7443, -78.8207],
-      ['Standard Beer + Food',              'restaurant', 35.7858, -78.6291],
-      ['Eastcut Sandwich Bar',              'restaurant', 35.8013, -78.6196],
-      // Coffee & Tea
-      ['Iris Coffee Lab',                   'coffee',     35.7726, -78.6426],
-      ['The Williams House',                'coffee',     35.7915, -78.7812],
-      ['Black & White Coffee at Videri',    'coffee',     35.7782, -78.6471],
-      ['Jubala Coffee',                     'coffee',     35.8462, -78.6558],
-      ['Idle Hour Coffee Roasters',         'coffee',     35.8014, -78.6592],
-      ['Fount Coffee + Kitchen',            'coffee',     35.8074, -78.8335],
-      ['Feature Flora',                     'coffee',     35.7727, -78.6467],
-      ['Cocoa Cinnamon',                    'coffee',     36.0050, -78.9240],
-      ['Lucky Tree Cafe',                   'coffee',     35.7853, -78.6994],
-      ['Cup A Joe',                         'coffee',     35.7847, -78.6846],
-      ['The Optimist',                      'coffee',     35.8007, -78.6193],
-      // Bakeries
-      ['Boulted Bread',                     'bakery',     35.7726, -78.6465],
-      ['Paul & Jack Bakery',                'bakery',     35.7835, -78.6490],
-      ["Big Dom's Bagel Shop",              'bakery',     35.7913, -78.7812],
-      ['Brecotea',                          'bakery',     35.7655, -78.7740],
-      ["Baker's Dozen Donuts",              'bakery',     35.7607, -78.7173],
-      // Ice Cream
-      ["Andia's Ice Cream",                 'icecream',   35.7808, -78.8538],
-      ['FRESH. Local Ice Cream',            'icecream',   35.8766, -78.6797],
-      ["JT's Creamery",                     'icecream',   35.6516, -78.8340],
-      ["Goodberry's Frozen Custard",        'icecream',   35.7938, -78.6619],
-      ['Howling Cow Creamery',              'icecream',   35.7641, -78.6742],
-      // Attractions
-      ['NC State Farmers Market',           'attraction', 35.7617, -78.6918],
-      ['Downtown Cary Park',                'attraction', 35.7893, -78.7773],
-      ['Turkuaz Market',                    'attraction', 35.7911, -78.7760],
-      ['Golden Hex',                        'attraction', 35.7998, -78.8078],
-      ['Dorothea Dix Park',                 'attraction', 35.7611, -78.6666],
-      ['Sarah P. Duke Gardens',             'attraction', 36.0013, -78.9371],
-      ['ZincHouse Winery & Brewery',        'attraction', 36.0030, -78.7980],
-      ['North Hills',                       'attraction', 35.8465, -78.6568],
-      ['NC Museum of Art',                  'attraction', 35.8016, -78.6803],
-      ['Pullen Park',                       'attraction', 35.7787, -78.6610],
-      ['Marbles Kids Museum',               'attraction', 35.7823, -78.6340],
-      ['JC Raulston Arboretum',             'attraction', 35.7862, -78.6943],
-      ['Boxcar Bar + Arcade',               'attraction', 35.7780, -78.6474],
-      ['Ebisu Life Store',                  'attraction', 35.7847, -78.6847],
-      ['Historic Yates Mill County Park',   'attraction', 35.7267, -78.6726],
-      ['Kings Bowl North Hills',            'attraction', 35.8474, -78.6540],
-      ['NC Museum of Natural Sciences',     'attraction', 35.7835, -78.6380]
-    ];
+    // The cards in the page are the single source of truth: every place lives in
+    // exactly one <article class="card" data-lat data-lng data-category>, and the
+    // map is built from those. Add a place by adding a card — the marker follows.
+    var cluster = L.markerClusterGroup({ maxClusterRadius: 45, showCoverageOnHover: false });
+    var markerById = {};
+    var bounds = L.latLngBounds([]);
 
-    places.forEach(function (p) {
-      L.circleMarker([p[2], p[3]], {
-        radius: 7,
-        fillColor: C[p[1]],
-        color: '#fff',
-        weight: 1.5,
-        opacity: 1,
-        fillOpacity: 0.85
-      }).addTo(map).bindTooltip(p[0], { direction: 'top', offset: [0, -8] });
+    function nameOf(card) {
+      var h3 = card.querySelector('h3');
+      return h3 ? h3.textContent.trim() : '';
+    }
+
+    function flashCard(card) {
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      card.classList.remove('card--flash');
+      void card.offsetWidth; // restart the highlight animation
+      card.classList.add('card--flash');
+    }
+
+    function showOnMap(marker) {
+      document.getElementById('map').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      cluster.zoomToShowLayer(marker, function () { marker.openTooltip(); });
+    }
+
+    var mappable = document.querySelectorAll('.card[data-lat]');
+    Array.prototype.forEach.call(mappable, function (card) {
+      var lat = parseFloat(card.getAttribute('data-lat'));
+      var lng = parseFloat(card.getAttribute('data-lng'));
+      var color = C[card.getAttribute('data-category')] || '#555';
+
+      var marker = L.marker([lat, lng], {
+        icon: L.divIcon({
+          className: 'map-pin-wrap',
+          html: '<span class="map-pin" style="background:' + color + '"></span>',
+          iconSize: [16, 16],
+          iconAnchor: [8, 8],
+          tooltipAnchor: [0, -8]
+        })
+      });
+      marker.bindTooltip(nameOf(card));
+      marker.on('click', function () { flashCard(card); });
+
+      cluster.addLayer(marker);
+      if (card.id) markerById[card.id] = marker;
+      bounds.extend([lat, lng]);
+
+      card.classList.add('card--mappable');
+      card.addEventListener('click', function (e) {
+        if (e.target.closest('a')) return; // let Website/Map links work normally
+        showOnMap(marker);
+      });
     });
+
+    map.addLayer(cluster);
+
+    // Short-list cards are duplicates that point at their canonical marker.
+    Array.prototype.forEach.call(document.querySelectorAll('.card[data-focus]'), function (card) {
+      var marker = markerById[card.getAttribute('data-focus')];
+      if (!marker) return;
+      card.classList.add('card--mappable');
+      card.addEventListener('click', function (e) {
+        if (e.target.closest('a')) return;
+        showOnMap(marker);
+      });
+    });
+
+    // Frame every place rather than a hard-coded centre/zoom.
+    if (bounds.isValid()) {
+      map.fitBounds(bounds, { padding: [30, 30] });
+    } else {
+      map.setView([35.800, -78.720], 11);
+    }
 
     var legend = L.control({ position: 'bottomright' });
     legend.onAdd = function () {

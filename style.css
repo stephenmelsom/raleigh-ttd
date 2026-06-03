@@ -253,6 +253,52 @@ main {
   box-shadow: 0 0 0 1px rgba(0,0,0,0.15);
 }
 
+/* Custom map pins (override Leaflet's default white div-icon box) */
+.map-pin-wrap {
+  background: transparent;
+  border: 0;
+}
+
+.map-pin {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+}
+
+/* ---------- Card <-> map linking ---------- */
+.card--mappable {
+  cursor: pointer;
+}
+
+.card--mappable:hover {
+  border-color: var(--accent);
+}
+
+/* Keep links and the text inside them behaving like normal text/links */
+.card--mappable a {
+  cursor: pointer;
+}
+
+@keyframes card-flash {
+  0%   { box-shadow: 0 0 0 3px var(--accent); }
+  100% { box-shadow: 0 0 0 3px rgba(15, 118, 110, 0); }
+}
+
+.card--flash {
+  animation: card-flash 1.6s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card--flash {
+    animation: none;
+    box-shadow: 0 0 0 3px var(--accent);
+  }
+}
+
 /* ---------- Small screens ---------- */
 @media (max-width: 480px) {
   .site-header {
