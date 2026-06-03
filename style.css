@@ -165,12 +165,6 @@ main {
   border-radius: 999px;
 }
 
-.pill.pick {
-  color: var(--accent);
-  background: var(--accent-soft);
-  border-color: var(--accent-soft);
-}
-
 .card p {
   margin: 0.55rem 0 0;
   color: var(--muted);
