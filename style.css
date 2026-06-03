@@ -171,6 +171,12 @@ main {
   border-color: #fdf1dc;
 }
 
+.pill.breakfast {
+  color: #2563eb;
+  background: #e8f0fe;
+  border-color: #e8f0fe;
+}
+
 .card p {
   margin: 0.55rem 0 0;
   color: var(--muted);
