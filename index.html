@@ -882,6 +882,25 @@
       return div;
     };
     legend.addTo(map);
+
+    map.locate({ setView: false });
+    map.on('locationfound', function (e) {
+      L.circle(e.latlng, {
+        radius: e.accuracy / 2,
+        color: '#0f766e',
+        fillColor: '#0f766e',
+        fillOpacity: 0.12,
+        weight: 1
+      }).addTo(map);
+      L.circleMarker(e.latlng, {
+        radius: 8,
+        fillColor: '#0f766e',
+        color: '#fff',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 1
+      }).addTo(map).bindTooltip('You are here', { direction: 'top', offset: [0, -10] });
+    });
   })();
   </script>
 </body>
