@@ -166,9 +166,9 @@ main {
 }
 
 .pill.kids {
-  color: var(--accent);
-  background: var(--accent-soft);
-  border-color: var(--accent-soft);
+  color: #b45309;
+  background: #fdf1dc;
+  border-color: #fdf1dc;
 }
 
 .card p {
