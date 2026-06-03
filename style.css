@@ -6,8 +6,67 @@
   --accent: #0f766e;
   --accent-soft: #e6f1ef;
   --border: #e6e8ea;
+  --nav-bg: rgba(255, 255, 255, 0.92);
+  --accent-contrast: #ffffff;
   --radius: 12px;
   --maxw: 980px;
+}
+
+/* ---------- Dark theme ---------- */
+/* The effective theme (light/dark) is set on <html data-theme> by JS;
+   "Auto" resolves to the system preference. */
+[data-theme="dark"] {
+  --bg: #0e1417;
+  --bg-tint: #161d21;
+  --text: #e7eaec;
+  --muted: #9aa6ac;
+  --accent: #2dd4bf;
+  --accent-soft: #14302c;
+  --border: #29333a;
+  --nav-bg: rgba(14, 20, 23, 0.9);
+  --accent-contrast: #06231f;
+}
+
+[data-theme="dark"] .pill.kids {
+  color: #fbbf24;
+  background: #3a2c12;
+  border-color: #3a2c12;
+}
+
+[data-theme="dark"] .pill.breakfast {
+  color: #93c5fd;
+  background: #18243f;
+  border-color: #18243f;
+}
+
+/* Darken the map tiles while leaving the coloured pins untouched */
+[data-theme="dark"] .leaflet-tile {
+  filter: invert(1) hue-rotate(180deg) brightness(0.95) contrast(0.9);
+}
+
+[data-theme="dark"] .leaflet-container {
+  background: #0a0f11;
+}
+
+[data-theme="dark"] .map-legend {
+  background: var(--bg-tint);
+  color: var(--text);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="dark"] .leaflet-bar a {
+  background: var(--bg-tint);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .leaflet-control-attribution {
+  background: rgba(22, 29, 33, 0.85);
+  color: var(--muted);
+}
+
+[data-theme="dark"] .leaflet-control-attribution a {
+  color: var(--accent);
 }
 
 * {
@@ -33,9 +92,45 @@ a {
 
 /* ---------- Header ---------- */
 .site-header {
+  position: relative;
   padding: 3rem 1.25rem 1.5rem;
   text-align: center;
   border-bottom: 1px solid var(--border);
+}
+
+/* ---------- Theme toggle ---------- */
+.theme-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-tint);
+}
+
+.theme-toggle button {
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--muted);
+  background: transparent;
+  border: 0;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.theme-toggle button:hover {
+  color: var(--text);
+}
+
+.theme-toggle button[aria-pressed="true"] {
+  color: var(--accent-contrast);
+  background: var(--accent);
 }
 
 .site-header h1 {
@@ -65,7 +160,7 @@ a {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(255, 255, 255, 0.92);
+  background: var(--nav-bg);
   backdrop-filter: saturate(180%) blur(8px);
   border-bottom: 1px solid var(--border);
 }
@@ -299,10 +394,23 @@ main {
   }
 }
 
+/* On narrow screens, stack the toggle above the centered title */
+@media (max-width: 600px) {
+  .site-header {
+    padding-top: 1.5rem;
+  }
+  .theme-toggle {
+    position: static;
+    display: flex;
+    width: max-content;
+    margin: 0 auto 1.25rem;
+  }
+}
+
 /* ---------- Small screens ---------- */
 @media (max-width: 480px) {
   .site-header {
-    padding-top: 2.25rem;
+    padding-top: 1.5rem;
   }
   .card-links {
     gap: 1.25rem;

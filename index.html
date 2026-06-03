@@ -4,6 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Melsom Guide to Raleigh</title>
+
+  <!-- Apply the saved/auto theme before first paint to avoid a flash -->
+  <script>
+    (function () {
+      try {
+        var p = localStorage.getItem('ttd-theme');
+        var t = (p === 'light' || p === 'dark') ? p
+              : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
   <meta name="description" content="Our favorite restaurants, coffee shops, bakeries, and attractions around Raleigh, NC." />
 
   <!-- Social / link previews -->
@@ -29,6 +41,11 @@
 </head>
 <body>
   <header class="site-header">
+    <div class="theme-toggle" role="group" aria-label="Color theme">
+      <button type="button" data-theme-choice="auto" aria-pressed="true">Auto</button>
+      <button type="button" data-theme-choice="light" aria-pressed="false">Light</button>
+      <button type="button" data-theme-choice="dark" aria-pressed="false">Dark</button>
+    </div>
     <h1>The Melsom Guide to Raleigh</h1>
     <div class="accent-rule"></div>
     <p class="intro">Our favorite spots around Raleigh &amp; Cary &mdash; the places we send friends and family to. Each one links to its website and Google Maps.</p>
@@ -36,6 +53,7 @@
 
   <nav class="site-nav" aria-label="Section navigation">
     <ul>
+      <li><a href="#baby-shower-2026">Baby Shower 2026</a></li>
       <li><a href="#short-list">Short List</a></li>
       <li><a href="#restaurants">Restaurants</a></li>
       <li><a href="#coffee">Coffee &amp; Tea</a></li>
@@ -50,6 +68,38 @@
   </div>
 
   <main>
+    <!-- ---------- Baby Shower 2026 ---------- -->
+    <section id="baby-shower-2026" class="section">
+      <div class="section-head">
+        <h2>Baby Shower 2026</h2>
+        <p>The venue and a favorite spot from the big day.</p>
+      </div>
+      <div class="grid">
+        <article class="card" id="place-thomas-g-crowder-woodland-center" data-category="attraction" data-lat="35.77197" data-lng="-78.70903">
+          <div class="card-title">
+            <h3>Thomas G. Crowder Woodland Center</h3>
+            <span class="pill">Raleigh</span>
+          </div>
+          <p>Waterfront event venue nestled in Lake Johnson Park &mdash; a beautiful natural setting for gatherings and celebrations.</p>
+          <div class="card-links">
+            <a href="https://raleighnc.gov/parks-and-recreation/places/thomas-g-crowder-woodland-center" target="_blank" rel="noopener">Website</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Thomas%20G.%20Crowder%20Woodland%20Center%2C%205611%20Jaguar%20Park%20Dr%2C%20Raleigh%2C%20NC%2027606" target="_blank" rel="noopener">Map</a>
+          </div>
+        </article>
+        <article class="card" id="place-trophy-brewing" data-category="restaurant" data-lat="35.76164" data-lng="-78.65710">
+          <div class="card-title">
+            <h3>Trophy Brewing</h3>
+            <span class="pill">Raleigh</span>
+          </div>
+          <p>20-barrel brewery &amp; taproom on Maywood Ave &mdash; 12 rotating drafts, food trucks on site, and a great patio.</p>
+          <div class="card-links">
+            <a href="https://www.trophybrewing.com/brewery-taproom" target="_blank" rel="noopener">Website</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Trophy%20Brewing%2C%20656%20Maywood%20Ave%2C%20Raleigh%2C%20NC%2027603" target="_blank" rel="noopener">Map</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <!-- ---------- Short List ---------- -->
     <section id="short-list" class="section shortlist">
       <div class="section-head">
@@ -913,6 +963,56 @@
       }).addTo(map);
       L.marker(e.latlng).addTo(map).bindTooltip('You are here', { direction: 'top', offset: [0, -40] });
     });
+  })();
+  </script>
+
+  <script>
+  // Theme toggle: Auto (match system) / Light / Dark. Auto is the default;
+  // an explicit choice is stored in localStorage, Auto clears it.
+  (function () {
+    var KEY = 'ttd-theme';
+    var root = document.documentElement;
+    var mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+    var toggle = document.querySelector('.theme-toggle');
+    if (!toggle) return;
+
+    function storedPref() {
+      var p = null;
+      try { p = localStorage.getItem(KEY); } catch (e) {}
+      return (p === 'light' || p === 'dark') ? p : 'auto';
+    }
+
+    function effective(pref) {
+      if (pref === 'light' || pref === 'dark') return pref;
+      return (mq && mq.matches) ? 'dark' : 'light';
+    }
+
+    function render(pref) {
+      root.setAttribute('data-theme', effective(pref));
+      Array.prototype.forEach.call(toggle.querySelectorAll('button'), function (b) {
+        b.setAttribute('aria-pressed', b.getAttribute('data-theme-choice') === pref ? 'true' : 'false');
+      });
+    }
+
+    render(storedPref());
+
+    toggle.addEventListener('click', function (e) {
+      var b = e.target.closest('button[data-theme-choice]');
+      if (!b) return;
+      var pref = b.getAttribute('data-theme-choice');
+      try {
+        if (pref === 'auto') localStorage.removeItem(KEY);
+        else localStorage.setItem(KEY, pref);
+      } catch (e2) {}
+      render(pref);
+    });
+
+    // Follow the system when on Auto.
+    if (mq) {
+      var onChange = function () { if (storedPref() === 'auto') render('auto'); };
+      if (mq.addEventListener) mq.addEventListener('change', onChange);
+      else if (mq.addListener) mq.addListener(onChange);
+    }
   })();
   </script>
 </body>
