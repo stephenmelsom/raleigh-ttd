@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Tools
+
+- `gh` cli
+
 ## What this is
 
 A static, single-page site listing favorite restaurants, coffee shops, bakeries, ice cream, and attractions around Raleigh & Cary, NC — made to share with friends and family. Two hand-edited files (`index.html`, `style.css`), no build step, no framework. The only runtime dependency is Leaflet 1.9.4 (loaded from unpkg CDN) for the interactive map at the top.
